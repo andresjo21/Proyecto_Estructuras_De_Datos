@@ -1,0 +1,3 @@
+D:/Andres Docs/CLASES/Estruc.Datos/Proyecto 1/Pruebas/cmake-build-debug/CMakeFiles/Pruebas.dir
+D:/Andres Docs/CLASES/Estruc.Datos/Proyecto 1/Pruebas/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Andres Docs/CLASES/Estruc.Datos/Proyecto 1/Pruebas/cmake-build-debug/CMakeFiles/rebuild_cache.dir
