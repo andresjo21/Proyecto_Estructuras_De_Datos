@@ -188,3 +188,53 @@ Integer &Integer::operator-=(const Integer &a) {
         this->list->remove(0);
     return *this;
 }
+
+bool Integer::operator==(const Integer &a) {
+    if(this->list->size() != a.getList()->size())
+        return false;
+    for (int i = 0; i < this->list->size(); ++i) {
+        if(*this->list->get(i) != *a.getList()->get(i))
+            return false;
+    }
+    return true;
+}
+
+bool Integer::operator!=(const Integer &a) {
+    return !(*this == a);
+}
+
+bool Integer::operator<(const Integer &a) {
+    if(this->list->size() < a.getList()->size())
+        return true;
+    if(this->list->size() > a.getList()->size())
+        return false;
+    for (int i = 0; i < this->list->size(); ++i) {
+        if(*this->list->get(i) < *a.getList()->get(i))
+            return true;
+        if(*this->list->get(i) > *a.getList()->get(i))
+            return false;
+    }
+    return false;
+}
+
+bool Integer::operator>(const Integer &a) {
+    if(this->list->size() > a.getList()->size())
+        return true;
+    if(this->list->size() < a.getList()->size())
+        return false;
+    for (int i = 0; i < this->list->size(); ++i) {
+        if(*this->list->get(i) > *a.getList()->get(i))
+            return true;
+        if(*this->list->get(i) < *a.getList()->get(i))
+            return false;
+    }
+    return false;
+}
+
+bool Integer::operator<=(const Integer &a) {
+    return !(*this > a);
+}
+
+bool Integer::operator>=(const Integer &a) {
+    return !(*this < a);
+}
