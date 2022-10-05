@@ -37,8 +37,12 @@ Integer::Integer(string s) {
         i--;
     }
 }
+Integer::Integer(){
+    list = new LinkedList<long>;
+}
 
 Integer::~Integer() {
+    delete this->list;
 }
 
 void Integer::setList(LinkedList<long> *list) {
@@ -187,6 +191,34 @@ Integer &Integer::operator-=(const Integer &a) {
     if(*this->list->get(0) == 0)
         this->list->remove(0);
     return *this;
+}
+
+//multiplication
+Integer Integer::operator*(const Integer &a){
+    //auxiliares
+    //Integer temporal que va a ir sumandose
+    Integer tempInteger = *this;
+    //long que captura el valor de cada nodo
+    long tempLongFromLink;
+    //comprobacion caso 1
+    if(*(this->getList()->get(0))==1 || *(a.getList()->get(0))==1)
+        return *this;
+    //comprobacion caso 0
+    if(*(this->getList()->get(0))==0 || *(a.getList()->get(0))==0)
+        return tempInteger-=tempInteger;
+    //casop diferente
+    //recorrer todos los nodos de la lista que entra por parametro
+    for(unsigned long i =0;i<a.getList()->size();i++){
+        //asignar el valor del nodo al long temporal
+        tempLongFromLink = *(a.getList()->get(i))-1;
+        //sumar la misma lista la cantidad de veces necesaria
+        
+        while(tempLongFromLink != 0){
+            tempInteger += *this;
+            tempLongFromLink--;
+        }
+    }
+    return tempInteger;
 }
 
 bool Integer::operator==(const Integer &a) {
