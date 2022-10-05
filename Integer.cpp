@@ -18,7 +18,6 @@ Integer::Integer(unsigned int i) {
 
 Integer::Integer(string s) {
     this->list = new LinkedList<unsigned long>;
-    //separar el string en partes de 9 caracteres de izquierda a drecha y guardarlo en una varible auxiliar
     string aux;
     int i = s.size() - 1;
     int counter = 0;
@@ -26,8 +25,6 @@ Integer::Integer(string s) {
         aux = s[i] + aux;
         counter++;
         if (counter == 9 || i == 0) {
-            //convertir la variable auxiliar a un long sin usar librerias y agregarlo a la lista
-            //unsigned long *num = new unsigned long;
             unsigned long num2 = 0;
             for (int j = 0; j < aux.size(); ++j) {
                 num2 += (aux[j] - '0') * pow(10, aux.size() - j - 1);
@@ -86,12 +83,8 @@ Integer &Integer::operator++() {
             } else {
                 *this->list->get(i) += 1;
             }
-
-            //*this->list->get(i) += 1;
         }
     }
-
-
     return *this;
 }
 
@@ -102,7 +95,7 @@ Integer Integer::operator++(int temp) {
 }
 
 Integer &Integer::operator--() {
-    int i,n;
+    int i;
     //recorrer la lista de derecha a izquierda
     for (i = this->list->size() - 1; i >= 0; i--) {
         //restarle 1 al ultimo elemento
@@ -116,6 +109,7 @@ Integer &Integer::operator--() {
             }
         }
     }
+    return *this;
 }
 
 Integer Integer::operator--(int temp) {
@@ -124,15 +118,38 @@ Integer Integer::operator--(int temp) {
     return temp2;
 }
 
-/*Integer Integer::operator+(const Integer &a) {
-    Integer temp;
-    LinkedList<unsigned long> *tempList = new LinkedList<unsigned long>;
-    temp = a;
-    for (int i = this->list->size() - 1; i >= 0; i--) {
-        *temp.list->get(i) += *this->list->get(i);
+Integer Integer::operator+(const Integer &a){
+    Integer temp = *this;
+    temp += a;
+    return temp;
+}
+
+Integer &Integer::operator+=(const Integer &a) {
+    int i, j ,n = this->list->size(), m = a.getList()->size();
+    unsigned long *aux = new unsigned long;
+    if( m > n) {
+        //añadir la cantidad de ceros necesarios a la lista
+        for (int k = 0; k < m - n; k++) {
+            this->list->add(new unsigned long (0));
+            n = this->list->size();
+        }
     }
-    return ;
-}*/
+    for (i = n - 1, j = m -1; i >= 0; i-- , j--) {
+        if(j >= 0)
+            *this->getList()->get(i) += *a.getList()->get(j);
+        if (*this->list->get(i) > 999999999) {
+            *aux = *this->list->get(i) / 1000000000;
+            *this->list->get(i) = *this->list->get(i) % 1000000000;
+            if(i == 0)
+                this->list->add(aux);
+            else
+                *this->list->get(i - 1) += 1;
+        }
+    }
+    return *this;
+}
+
+
 
 
 
