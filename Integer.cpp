@@ -197,28 +197,31 @@ Integer &Integer::operator-=(const Integer &a) {
 Integer Integer::operator*(const Integer &a){
     //auxiliares
     //Integer temporal que va a ir sumandose
-    Integer tempInteger = *this;
+    LinkedList<long >* T = new LinkedList<long>(*this->getList());
+    Integer* tempInteger = new Integer();
+    Integer tempInteger2 = *this;
     //long que captura el valor de cada nodo
     long tempLongFromLink;
     //comprobacion caso 1
     if(*(this->getList()->get(0))==1 || *(a.getList()->get(0))==1)
         return *this;
     //comprobacion caso 0
-    if(*(this->getList()->get(0))==0 || *(a.getList()->get(0))==0)
-        return tempInteger-=tempInteger;
-    //casop diferente
+    if(*(this->getList()->get(0))==0 || *(a.getList()->get(0))==0){
+        tempInteger->getList()->add(0,new long(0));
+        return *tempInteger;
+    }
+    //caso diferente
     //recorrer todos los nodos de la lista que entra por parametro
     for(unsigned long i =0;i<a.getList()->size();i++){
         //asignar el valor del nodo al long temporal
-        tempLongFromLink = *(a.getList()->get(i))-1;
+        tempLongFromLink = *(a.getList()->get(i));
         //sumar la misma lista la cantidad de veces necesaria
-        
         while(tempLongFromLink != 0){
-            tempInteger += *this;
+            *tempInteger += tempInteger2;
             tempLongFromLink--;
         }
     }
-    return tempInteger;
+    return *tempInteger;
 }
 
 bool Integer::operator==(const Integer &a) {

@@ -179,9 +179,29 @@ private:
     Link<T> *first;
 
 public:
+    int getK() const {
+        return k;
+    }
+
+    void setK(int k) {
+        LinkedList::k = k;
+    }
+
+    Link<T> *getFirst() const {
+        return first;
+    }
+
+    void setFirst(Link<T> *first) {
+        LinkedList::first = first;
+    }
+
     LinkedList(){
         this->k = 0;
         this->first = nullptr;
+    }
+    LinkedList(LinkedList const &l){
+        this->setK(l.k);
+        this->setFirst(l.first);
     }
 
     int size(){
