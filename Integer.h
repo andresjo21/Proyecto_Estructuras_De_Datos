@@ -16,15 +16,15 @@ public:
 
     ~Integer();
 
-    LinkedList<unsigned long> *getList() const;
-    void setList(LinkedList<unsigned long> *list);
+    LinkedList<long> *getList() const;
+    void setList(LinkedList<long> *list);
     bool Null(const Integer& a);
 
 //Funciones que auxiliares
     //friend void divide_by_2(Integer &a);
     //friend bool Null(const Integer &);
     //friend int Length(const Integer &);
-    unsigned long operator[](const int) const;
+    long operator[](const int) const;
 
 /* * * * Operator Overloading * * * */
 //Direct assigment
@@ -42,8 +42,12 @@ public:
     Integer operator+(const Integer &a);
     Integer& operator+=(const Integer &a);
 
+    //Substraction
+    Integer operator-(const Integer &a);
+    Integer& operator-=(const Integer &a);
+
 private:
-    LinkedList<unsigned long > *list;
+    LinkedList<long > *list;
 };
 
 

@@ -9,15 +9,15 @@ Integer::Integer(Integer &l) {
 }
 
 Integer::Integer(unsigned int i) {
-    //convertir el int a unsigned long
-    unsigned long *ul = new unsigned long();
-    ul = reinterpret_cast<unsigned long *>(i);
-    this->list = new LinkedList<unsigned long>;
+    //convertir el int a long
+    long *ul = new long();
+    ul = reinterpret_cast<long *>(i);
+    this->list = new LinkedList<long>;
     this->list->add(ul);
 }
 
 Integer::Integer(string s) {
-    this->list = new LinkedList<unsigned long>;
+    this->list = new LinkedList<long>;
     string aux;
     int i = s.size() - 1;
     int counter = 0;
@@ -25,11 +25,11 @@ Integer::Integer(string s) {
         aux = s[i] + aux;
         counter++;
         if (counter == 9 || i == 0) {
-            unsigned long num2 = 0;
+            long num2 = 0;
             for (int j = 0; j < aux.size(); ++j) {
                 num2 += (aux[j] - '0') * pow(10, aux.size() - j - 1);
             }
-            unsigned long *num = new unsigned long(num2);
+            long *num = new long(num2);
             this->list->add(num);
             aux = "";
             counter = 0;
@@ -41,11 +41,11 @@ Integer::Integer(string s) {
 Integer::~Integer() {
 }
 
-void Integer::setList(LinkedList<unsigned long> *list) {
+void Integer::setList(LinkedList<long> *list) {
     Integer::list = list;
 }
 
-LinkedList<unsigned long> *Integer::getList() const {
+LinkedList<long> *Integer::getList() const {
     return list;
 }
 
@@ -55,7 +55,7 @@ bool Null(const Integer& a) {
     return false;
 }
 
-unsigned long Integer::operator[](const int index) const {
+long Integer::operator[](const int index) const {
     if(list->size() <= index || index < 0)
         throw ("ERROR");
     return *this->list->get(index);
@@ -118,6 +118,8 @@ Integer Integer::operator--(int temp) {
     return temp2;
 }
 
+//Addition
+
 Integer Integer::operator+(const Integer &a){
     Integer temp = *this;
     temp += a;
@@ -126,11 +128,11 @@ Integer Integer::operator+(const Integer &a){
 
 Integer &Integer::operator+=(const Integer &a) {
     int i, j ,n = this->list->size(), m = a.getList()->size();
-    unsigned long *aux = new unsigned long;
+    long *aux = new long;
     if( m > n) {
         //añadir la cantidad de ceros necesarios a la lista
         for (int k = 0; k < m - n; k++) {
-            this->list->add(new unsigned long (0));
+            this->list->add(new long (0));
             n = this->list->size();
         }
     }
@@ -149,10 +151,40 @@ Integer &Integer::operator+=(const Integer &a) {
     return *this;
 }
 
+//Subtraction
 
+Integer Integer::operator-(const Integer &a){
+    Integer temp = *this;
+    temp -= a;
+    return temp;
+}
 
-
-
-
-
-
+Integer &Integer::operator-=(const Integer &a) {
+    int i, j ,n = this->list->size(), m = a.getList()->size();
+    long *aux = new long;
+    if( m > n) {
+        LinkedList<long> temp = *this->list;
+        this->list = new LinkedList<long>(*a.getList());
+        *a.getList() = temp;
+        n = this->list->size();
+        m = a.getList()->size();
+    }
+    for (i = n - 1, j = m -1; i >= 0; i-- , j--) {
+        if(j >= 0)
+            *this->getList()->get(i) -= *a.getList()->get(j);
+        if (*this->list->get(i) < 0) {
+            *aux = *this->list->get(i) / 1000000000;
+            *this->list->get(i) = *this->list->get(i) % 1000000000;
+            if(i!=0)
+                *this->list->get(i ) *= -1;
+            if(i == 0)
+                this->list->add(aux);
+            else
+                *this->list->get(i - 1) -= 1;
+        }
+    }
+    //si el primer elemento de la lista es 0, eliminarlo
+    if(*this->list->get(0) == 0)
+        this->list->remove(0);
+    return *this;
+}
