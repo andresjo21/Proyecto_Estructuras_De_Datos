@@ -49,6 +49,10 @@ public:
 
     //multiplication
     Integer operator*(const Integer &a);
+    Integer operator*=(const Integer &a);
+
+    //Division
+    Integer operator/(const Integer &a);
 
 
     //Comparison operators

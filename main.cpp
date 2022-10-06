@@ -4,8 +4,8 @@
 int main() {
     Integer i1("1111111111");
     Integer i2("11111111111");
-    Integer ip("99999999");
-    Integer ip2("0");
+    Integer ip("1000000000");
+    Integer ip2("3");
     Integer i3;
 
 i3 =ip*ip2;
@@ -25,6 +25,7 @@ i3 =ip*ip2;
 
 
     //TESTS
+
     LinkedList<long> l1 ;
     for(long i=0;i<15;i++){
         long* f = new long (i);

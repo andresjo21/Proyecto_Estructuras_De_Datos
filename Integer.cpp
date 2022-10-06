@@ -192,6 +192,13 @@ Integer &Integer::operator-=(const Integer &a) {
         this->list->remove(0);
     return *this;
 }
+        //TEST POR RESOLVER
+                        //Integer Integer::operator*(const Integer &a){
+                        //    Integer temp = *this;
+                        //    Integer* temp2 = new Integer();
+                        //    *temp2 = temp *= temp;
+                        //    return *temp2;
+                        //}
 
 //multiplication
 Integer Integer::operator*(const Integer &a){
@@ -206,7 +213,9 @@ Integer Integer::operator*(const Integer &a){
     if(*(this->getList()->get(0))==1 || *(a.getList()->get(0))==1)
         return *this;
     //comprobacion caso 0
-    if(*(this->getList()->get(0))==0 || *(a.getList()->get(0))==0){
+    if((*(this->getList()->get(0))==0) && (this->getList()->size() ==1)
+                    ||
+            *(a.getList()->get(0))==0&& (a.getList()->size() ==1)){
         tempInteger->getList()->add(0,new long(0));
         return *tempInteger;
     }
@@ -222,6 +231,27 @@ Integer Integer::operator*(const Integer &a){
         }
     }
     return *tempInteger;
+}
+
+//Division
+Integer Integer::operator/(const Integer &a){
+    //auxiliares
+    //contador
+    Integer* contador = new Integer("0");
+    Integer* resultado = new Integer();
+    Integer* base = new Integer("0");
+    Integer* baseMasUno = new Integer("1");
+
+    while (this->list != base->list) {
+        *resultado = (*this -= a);
+        if (*resultado > *base) {
+                *contador += *baseMasUno;
+        }
+        else{
+            break;
+        }
+    }
+return *contador;
 }
 
 bool Integer::operator==(const Integer &a) {
