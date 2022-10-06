@@ -42,7 +42,7 @@ Integer::Integer(){
 }
 
 Integer::~Integer() {
-    delete this->list;
+//    delete this->list;
 }
 
 void Integer::setList(LinkedList<long> *list) {
@@ -193,18 +193,16 @@ Integer &Integer::operator-=(const Integer &a) {
     return *this;
 }
         //TEST POR RESOLVER
-                        //Integer Integer::operator*(const Integer &a){
-                        //    Integer temp = *this;
-                        //    Integer* temp2 = new Integer();
-                        //    *temp2 = temp *= temp;
-                        //    return *temp2;
-                        //}
+        Integer Integer::operator*(const Integer &a){
+        Integer temp = *this;
+        temp *= a;
+        return temp;
+}
 
 //multiplication
-Integer Integer::operator*(const Integer &a){
+Integer Integer::operator*=(const Integer &a){
     //auxiliares
     //Integer temporal que va a ir sumandose
-    LinkedList<long >* T = new LinkedList<long>(*this->getList());
     Integer* tempInteger = new Integer("0");
     Integer tempInteger2 = *this;
     //long que captura el valor de cada nodo
@@ -219,7 +217,8 @@ Integer Integer::operator*(const Integer &a){
                     ||
             *(a.getList()->get(0))==0&& (a.getList()->size() ==1)){
         tempInteger->getList()->add(0,new long(0));
-        return *tempInteger;
+        *this = *tempInteger;
+        return *this;
     }
     //caso diferente
     //recorrer todos los nodos de la lista que entra por parametro
@@ -232,7 +231,8 @@ Integer Integer::operator*(const Integer &a){
             tempLongFromLink--;
         }
     }
-    return *tempInteger;
+    *this = *tempInteger;
+    return *this;
 }
 
 //Division
