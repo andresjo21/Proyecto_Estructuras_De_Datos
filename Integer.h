@@ -63,6 +63,10 @@ public:
     bool operator<=(const Integer &a);
     bool operator>=(const Integer &a);
 
+    //Power
+    Integer operator^(const Integer &a);
+    Integer &operator^=(const Integer &a);
+
     //toString
     string toString();
 private:

@@ -320,10 +320,26 @@ string Integer::toString() {
         string temp2 = to_string(*this->list->get(i));
         //si el long es menor a 9 digitos, agregarle ceros a la izquierda mientras no sea el primer elemento
         while(temp2.length() < 9 && i != 0){
-            temp2 += "0";
+            temp2 = "0" + temp2;
         }
         //agregar el string al string final
         temp += temp2;
     }
     return temp;
+}
+
+Integer Integer::operator^(const Integer &a) {
+    Integer temp = *this;
+    temp ^= a;
+    return temp;
+}
+
+Integer &Integer::operator^=(const Integer &a) {
+Integer temp = *this;
+    for (int i = a.getList()->size()-1; i >= 0; --i) {
+        for (int j = 0; j < *a.getList()->get(i)-1; ++j) {
+            *this *= temp;
+        }
+    }
+    return *this;
 }
