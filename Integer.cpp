@@ -201,10 +201,17 @@ Integer &Integer::operator-=(const Integer &a) {
 
 //multiplication
 Integer Integer::operator*=(const Integer &a){
+    int n = this->list->size(), m = a.getList()->size();
+    if( m > n) {
+        LinkedList<long> temp = *this->list;
+        this->list = new LinkedList<long>(*a.getList());
+        *a.getList() = temp;
+    }
     //auxiliares
     //Integer temporal que va a ir sumandose
     Integer* tempInteger = new Integer("0");
     Integer tempInteger2 = *this;
+
     //long que captura el valor de cada nodo
     long tempLongFromLink;
     //comprobacion caso 1

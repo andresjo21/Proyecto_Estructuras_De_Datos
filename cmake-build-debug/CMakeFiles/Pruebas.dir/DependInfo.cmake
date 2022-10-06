@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/Andres Mendez Solano/OneDrive/Desktop/Proyecto_Estructuras_De_Datos/Integer.cpp" "CMakeFiles/Pruebas.dir/Integer.cpp.obj" "gcc" "CMakeFiles/Pruebas.dir/Integer.cpp.obj.d"
-  "C:/Users/Andres Mendez Solano/OneDrive/Desktop/Proyecto_Estructuras_De_Datos/main.cpp" "CMakeFiles/Pruebas.dir/main.cpp.obj" "gcc" "CMakeFiles/Pruebas.dir/main.cpp.obj.d"
+  "D:/Andres Docs/CLASES/Estruc.Datos/Proyecto 1/Pruebas/Integer.cpp" "CMakeFiles/Pruebas.dir/Integer.cpp.obj" "gcc" "CMakeFiles/Pruebas.dir/Integer.cpp.obj.d"
+  "D:/Andres Docs/CLASES/Estruc.Datos/Proyecto 1/Pruebas/main.cpp" "CMakeFiles/Pruebas.dir/main.cpp.obj" "gcc" "CMakeFiles/Pruebas.dir/main.cpp.obj.d"
   )
 
 # Targets to which this target links.
