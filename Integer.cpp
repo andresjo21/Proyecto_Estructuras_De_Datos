@@ -305,3 +305,18 @@ bool Integer::operator<=(const Integer &a) {
 bool Integer::operator>=(const Integer &a) {
     return !(*this < a);
 }
+
+string Integer::toString() {
+    string temp = "";
+    for (int i = 0; i < this->list->size(); ++i) {
+        //pasar el long a string
+        string temp2 = to_string(*this->list->get(i));
+        //si el long es menor a 9 digitos, agregarle ceros a la izquierda mientras no sea el primer elemento
+        while(temp2.length() < 9 && i != 0){
+            temp2 += "0";
+        }
+        //agregar el string al string final
+        temp += temp2;
+    }
+    return temp;
+}

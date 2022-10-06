@@ -63,6 +63,8 @@ public:
     bool operator<=(const Integer &a);
     bool operator>=(const Integer &a);
 
+    //toString
+    string toString();
 private:
     LinkedList<long > *list;
 };

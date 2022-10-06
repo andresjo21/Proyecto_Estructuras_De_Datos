@@ -4,13 +4,13 @@
 int main() {
     Integer i1("1111111111");
     Integer i2("11111111111");
-    Integer ip("1000000000");
+    Integer ip("50000");
     Integer ip3("2000000000");
-    Integer ip2("3");
+    Integer ip2("50000");
     Integer i3;
 
 i3 =ip*ip2;
-   cout<<i3.getList()->toString()<<endl;
+   cout<<i3.toString()<<endl;
 
     //cout<<*i2.getList()->get(0)<<endl;
     //i1++;
