@@ -205,12 +205,14 @@ Integer Integer::operator*(const Integer &a){
     //auxiliares
     //Integer temporal que va a ir sumandose
     LinkedList<long >* T = new LinkedList<long>(*this->getList());
-    Integer* tempInteger = new Integer();
+    Integer* tempInteger = new Integer("0");
     Integer tempInteger2 = *this;
     //long que captura el valor de cada nodo
     long tempLongFromLink;
     //comprobacion caso 1
-    if(*(this->getList()->get(0))==1 || *(a.getList()->get(0))==1)
+    if(*(this->getList()->get(0))==1 && (this->getList()->size() ==1)
+                                    ||
+    *(a.getList()->get(0))==1&& (a.getList()->size() ==1))
         return *this;
     //comprobacion caso 0
     if((*(this->getList()->get(0))==0) && (this->getList()->size() ==1)

@@ -5,6 +5,7 @@ int main() {
     Integer i1("1111111111");
     Integer i2("11111111111");
     Integer ip("1000000000");
+    Integer ip3("2000000000");
     Integer ip2("3");
     Integer i3;
 
