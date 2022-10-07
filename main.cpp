@@ -2,34 +2,35 @@
 #include "Integer.h"
 
 int main() {
-    Integer i1("1111111111");
-    Integer i2("11111111111");
-    Integer ip("999999");
-    Integer ip2("3");
+    Integer i1("123454345328385940099849302");
+    Integer i2("25");
 
-   cout<<(ip^ip2).toString()<<endl;
+    Integer ip;
+    Integer ip2("2432902008176640000");
+
+    cout << "-------------------------Factorial"
+         << "------------------------------\n";
+    for (int i = 0; i <= 22; i++) {
+        Integer fact;
+        fact = fact.factorial(i);
+        cout << "Factorial of "
+             << i << " = ";
+        cout << fact.toString() << '\n';
+    }
 
     //cout<<*i2.getList()->get(0)<<endl;
     //i1++;
     //i1--;
     //cout << "i1: " << i1.getList()->toString() << endl;
-    //cout << "Suma: " << (i1 + i2).getList()->toString() << endl;
+    //cout << "Suma: " << (i1 + i2).toString() << endl;
     //cout << "Resta: " << (i1 - i2).getList()->toString() << endl;
     //cout << "Igualdad: " << (i1 == i2) << endl;
     //cout << "Igualdad: " << (i1 < i2) << endl;
     //cout << "Igualdad: " << (i1 > i2) << endl;
     //cout << "Igualdad: " << (i1 >= i2) << endl;
     //cout << "Igualdad: " << (i1 <= i2) << endl;
+    //cout<<(i1*i2).toString()<<endl;
 
-
-    //TESTS
-
-    LinkedList<long> l1 ;
-    for(long i=0;i<15;i++){
-        long* f = new long (i);
-        l1.add(f);
-    }
-    cout<<l1.toString()<<endl;
 
     return 0;
 }

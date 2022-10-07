@@ -202,7 +202,7 @@ Integer &Integer::operator-=(const Integer &a) {
 //multiplication
 Integer Integer::operator*=(const Integer &a){
     int n = this->list->size(), m = a.getList()->size();
-    if( m > n) {
+    if( m > n ) {
         LinkedList<long> temp = *this->list;
         this->list = new LinkedList<long>(*a.getList());
         *a.getList() = temp;
@@ -215,10 +215,14 @@ Integer Integer::operator*=(const Integer &a){
     //long que captura el valor de cada nodo
     long tempLongFromLink;
     //comprobacion caso 1
-    if(*(this->getList()->get(0))==1 && (this->getList()->size() ==1)
-                                    ||
-    *(a.getList()->get(0))==1&& (a.getList()->size() ==1))
+    if(*(this->getList()->get(0))== 1 && (this->getList()->size() ==1)) {
+        *this = a;
         return *this;
+    }
+    if(*(a.getList()->get(0))==1 && (a.getList()->size() ==1)){
+        return *this;
+    }
+
     //comprobacion caso 0
     if((*(this->getList()->get(0))==0) && (this->getList()->size() ==1)
                     ||
@@ -342,4 +346,34 @@ Integer temp = *this;
         }
     }
     return *this;
+}
+
+Integer Integer::factorial(int n) {
+    Integer temp("1");
+    for (int i = 2; i <= n; ++i) {
+        Integer temp2(to_string(i));
+        temp *= temp2;
+    }
+    return temp;
+
+    //si el elemento de la lista es 0, y su size es de 1, retornar 1
+    /*if (*this->list->get(0) == 0 && this->list->size() == 1)
+        return *this;
+    else {
+
+        LinkedList<long> temp = *this->list;
+        Integer tempInteger;
+        tempInteger.setList(&temp);
+
+        Integer* tempInteger2 = new Integer(this->toString());
+        tempInteger--;
+        //recorrer la lista
+        for (int i = 0; i < this->getList()->size() ; i++) {
+            while (*tempInteger.getList()->get(i) > 0) {
+                *tempInteger2 *= tempInteger;
+                tempInteger--;
+            }
+        }
+        return *tempInteger2;
+    }*/
 }

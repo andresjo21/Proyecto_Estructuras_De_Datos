@@ -67,6 +67,9 @@ public:
     Integer operator^(const Integer &a);
     Integer &operator^=(const Integer &a);
 
+    //Factorial
+    Integer factorial(int n);
+
     //toString
     string toString();
 private:
