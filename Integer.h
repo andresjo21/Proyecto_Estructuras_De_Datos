@@ -7,6 +7,10 @@
 #ifndef PRUEBAS_INTEGER_H
 #define PRUEBAS_INTEGER_H
 
+//MACROS
+#define ZER0 0
+#define ONE 1
+
 class Integer {
 public:
     Integer(Integer &l);
