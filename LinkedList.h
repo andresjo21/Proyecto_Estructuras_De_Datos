@@ -192,10 +192,15 @@ public:
     }
 
     bool isEmpty(){
-        if(this->get(0) == 0 && this->size()==0)
+        if(this->get(0)==0&&this->size()==0){
             return true;
-        else
-            return false;
+        }
+        for(long i = 0; i<this->size();i++){
+            long zero = 0;
+            if(*(this->get(i)) != zero)
+                return false;
+        }
+        return true;
     }
 
     void setFirst(Link<T> *first) {

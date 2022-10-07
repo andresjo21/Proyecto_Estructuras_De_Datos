@@ -23,7 +23,7 @@ int main() {
     }
 
     Integer six("2000000000");
-    Integer seven("1000000000");
+    Integer seven("2");
 
 
     // Printing all the numbers
