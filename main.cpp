@@ -5,12 +5,13 @@ int main() {
     Integer i1("123454345328385940099849302");
     Integer i2("25");
 
-    Integer ip;
     Integer ip2("2432902008176640000");
+    Integer ip3("2432902008176640000");
 
     cout << "-------------------------Factorial"
          << "------------------------------\n";
-    for (int i = 0; i <= 22; i++) {
+
+    for (int i = 0; i <= 100; i++) {
         Integer fact;
         fact = fact.factorial(i);
         cout << "Factorial of "
@@ -29,7 +30,6 @@ int main() {
     //cout << "Igualdad: " << (i1 > i2) << endl;
     //cout << "Igualdad: " << (i1 >= i2) << endl;
     //cout << "Igualdad: " << (i1 <= i2) << endl;
-    //cout<<(i1*i2).toString()<<endl;
 
 
     return 0;

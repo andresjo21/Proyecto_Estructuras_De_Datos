@@ -137,8 +137,8 @@ Integer &Integer::operator+=(const Integer &a) {
         //añadir la cantidad de ceros necesarios a la lista
         for (int k = 0; k < m - n; k++) {
             this->list->add(new long (0));
-            n = this->list->size();
         }
+        n = this->list->size();
     }
     for (i = n - 1, j = m -1; i >= 0; i-- , j--) {
         if(j >= 0)
