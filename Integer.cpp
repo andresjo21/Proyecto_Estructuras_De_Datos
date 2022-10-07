@@ -355,25 +355,18 @@ Integer Integer::factorial(int n) {
         temp *= temp2;
     }
     return temp;
+}
 
-    //si el elemento de la lista es 0, y su size es de 1, retornar 1
-    /*if (*this->list->get(0) == 0 && this->list->size() == 1)
-        return *this;
-    else {
-
-        LinkedList<long> temp = *this->list;
-        Integer tempInteger;
-        tempInteger.setList(&temp);
-
-        Integer* tempInteger2 = new Integer(this->toString());
-        tempInteger--;
-        //recorrer la lista
-        for (int i = 0; i < this->getList()->size() ; i++) {
-            while (*tempInteger.getList()->get(i) > 0) {
-                *tempInteger2 *= tempInteger;
-                tempInteger--;
-            }
-        }
-        return *tempInteger2;
-    }*/
+Integer Integer::fibonacci(int n) {
+    Integer temp("1"), temp2("1"), temp3("0");
+    if(!n)
+        return temp3;
+    n--;
+    while(n--){
+        Integer *temp4 = new Integer(temp.toString());
+        temp3 = *temp4 + temp2;
+        temp2 = temp;
+        temp = temp3;
+    }
+    return temp2;
 }

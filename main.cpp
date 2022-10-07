@@ -8,7 +8,18 @@ int main() {
     Integer ip2("2432902008176640000");
     Integer ip3("2432902008176640000");
 
-    cout << "-------------------------Factorial"
+    // Fibonnacci de 1 a 100
+    cout << "-------------------------Fibonacci"
+         << "------------------------------\n";
+    for (int i = 0; i <= 100; i++) {
+        Integer fib;
+        fib = fib.fibonacci(i);
+        cout << "Fibonacci " << i << " = " << fib.toString() << '\n';
+    }
+
+
+    //Calculo del factorial de 1 a 100
+    /*cout << "-------------------------Factorial"
          << "------------------------------\n";
 
     for (int i = 0; i <= 100; i++) {
@@ -17,7 +28,7 @@ int main() {
         cout << "Factorial of "
              << i << " = ";
         cout << fact.toString() << '\n';
-    }
+    }*/
 
     //cout<<*i2.getList()->get(0)<<endl;
     //i1++;

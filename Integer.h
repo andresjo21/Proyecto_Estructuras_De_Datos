@@ -70,6 +70,9 @@ public:
     //Factorial
     Integer factorial(int n);
 
+    //Fibonacci
+    Integer fibonacci(int n);
+
     //toString
     string toString();
 private:
