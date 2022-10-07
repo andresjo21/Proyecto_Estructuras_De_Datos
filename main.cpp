@@ -22,8 +22,8 @@ int main() {
         cout << "fifth is larger than fourth!\n";
     }
 
-    Integer six("2000000000");
-    Integer seven("2");
+    Integer six("30");
+    Integer seven("31");
 
 
     // Printing all the numbers

@@ -267,7 +267,7 @@ Integer &Integer::operator/=(const Integer &a) {
     //auxiliares
     //contador
     Integer* contador = new Integer("0");
-    Integer* baseZero = new Integer("0");
+    Integer* baseZero = new Integer(to_string(ZER0));
     Integer* resultado = new Integer();
     Integer* temp = new Integer(this->toString());
     Integer* baseMasUno = new Integer("1");
@@ -277,13 +277,23 @@ Integer &Integer::operator/=(const Integer &a) {
     if(*(a.getList()->get(0))==1&&a.getList()->size()==1){
         return *this;
     }
+    //caso numero menor entre mayor
+    if(*this<a){
+        *this = *baseZero;
+        return *this;
+    }
 
     do {
-        *this -= a;
-        *contador += *baseMasUno;
-        if(*contador == *base2){
-            cout <<"here"<<endl;
+        if(!(*this<a)) {
+            *this -= a;
+            *contador += *baseMasUno;
+//            cout << endl;
+//            cout << this->toString() << endl;
+//            cout << contador->toString() << endl;
         }
+        else
+            break;
+
     } while (!(this->getList()->isEmpty()));
 
     *this = *contador;
