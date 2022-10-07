@@ -190,9 +190,15 @@ Integer &Integer::operator-=(const Integer &a) {
     //si el primer elemento de la lista es 0, eliminarlo
     if(*this->list->get(0) == 0)
         this->list->remove(0);
+//    //si todos los elementos de la lista son 0, poner el primer elemento en 0 y eliminar el resto
+//    if(*this->list->get(0) == 0){
+//        for (int k = 1; k < this->list->size(); k++) {
+//            this->list->remove(k);
+//        }
+//    }
     return *this;
 }
-        //TEST POR RESOLVER
+
         Integer Integer::operator*(const Integer &a){
         Integer temp = *this;
         temp *= a;
@@ -251,19 +257,17 @@ Integer Integer::operator/(const Integer &a){
     //auxiliares
     //contador
     Integer* contador = new Integer("0");
+    Integer* baseZero = new Integer("0");
     Integer* resultado = new Integer();
-    Integer* base = new Integer("0");
+    Integer* temp = new Integer(this->toString());
     Integer* baseMasUno = new Integer("1");
 
-    while (this->list != base->list) {
+    do {
         *resultado = (*this -= a);
-        if (*resultado > *base) {
-                *contador += *baseMasUno;
-        }
-        else{
-            break;
-        }
-    }
+        *contador += *baseMasUno;
+    } while (*resultado >*baseZero);
+
+
 return *contador;
 }
 
