@@ -67,6 +67,9 @@ public:
     //Fibonacci
     Integer fibonacci(int n);
 
+    //combinations
+    Integer combinations(int n,int k);
+
     //Sobre carga de operador <<
     friend ostream& operator<<(ostream& os, const Integer& a);
 

@@ -396,6 +396,13 @@ Integer Integer::fibonacci(int n) {
     return temp2;
 }
 
+//combinations
+Integer Integer::combinations(int n,int k){
+    Integer result ;
+    result = factorial(n)/(factorial(k)*(factorial(n-k)));
+    return result;
+}
+
 ostream &operator<<(ostream &os, const Integer &a) {
     for (int i = a.getList()->size() - 1; i >= 0; i--)
         cout << *a.getList()->get(i);
@@ -408,6 +415,8 @@ istream &operator>>(istream &is, Integer &a) {
         a = Integer(temp);
         return is;
 }
+
+
 
 
 
