@@ -263,20 +263,31 @@ Integer Integer::operator/(const Integer &a){
 }
 
 Integer &Integer::operator/=(const Integer &a) {
-    /*//auxiliares
+
+    //auxiliares
     //contador
     Integer* contador = new Integer("0");
     Integer* baseZero = new Integer("0");
     Integer* resultado = new Integer();
     Integer* temp = new Integer(this->toString());
     Integer* baseMasUno = new Integer("1");
+    Integer* base2 = new Integer("17");
+
+    //caso Dividir entre uno
+    if(*(a.getList()->get(0))==1&&a.getList()->size()==1){
+        return *this;
+    }
 
     do {
-        *resultado = (*this -= a);
+        *this -= a;
         *contador += *baseMasUno;
-    } while (*resultado >*baseZero);
+        if(*contador == *base2){
+            cout <<"here"<<endl;
+        }
+    } while (!(this->getList()->isEmpty()));
 
-    return *contador;*/
+    *this = *contador;
+    return *this;
 }
 
 

@@ -22,8 +22,9 @@ int main() {
         cout << "fifth is larger than fourth!\n";
     }
 
-    Integer six("3");
-    Integer seven("2");
+    Integer six("2000000000");
+    Integer seven("1000000000");
+
 
     // Printing all the numbers
     cout << "first = " << first << '\n';
@@ -42,9 +43,9 @@ int main() {
     cout << "Sum of fourth and fifth = "
          << sum << '\n';
     Integer rest;
-    rest = (six - seven);
-    cout << "Res of six and seven = "
-         << rest << '\n';
+//    rest = (six - seven);
+//    cout << "Res of six and seven = "
+//         << rest.toString() << '\n';
     Integer product;
     product = second * third;
     cout << "Product of second and third = "
@@ -69,6 +70,6 @@ int main() {
              << i << " = ";
         cout << fact << '\n';
     }*/
-
+    cout<<"Division de "<<six.toString()<<" / "<<seven.toString()<<" =  "<<(six/seven).toString()<<endl;
     return 0;
 }

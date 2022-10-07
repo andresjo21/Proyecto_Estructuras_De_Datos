@@ -191,6 +191,13 @@ public:
         return first;
     }
 
+    bool isEmpty(){
+        if(this->get(0) == 0 && this->size()==0)
+            return true;
+        else
+            return false;
+    }
+
     void setFirst(Link<T> *first) {
         LinkedList::first = first;
     }
