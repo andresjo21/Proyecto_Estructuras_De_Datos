@@ -159,10 +159,12 @@ Integer Integer::operator-(const Integer &a){
 
 Integer &Integer::operator-=(const Integer &a) {
     int n = this->list->size(), m = a.getList()->size();
+    bool negative = false;
     if( m > n) {
         LinkedList<long> temp = *this->list;
         this->list = new LinkedList<long>(*a.getList());
         *a.getList() = temp;
+        negative = true;
     }
 
     if(m == n) {
@@ -171,6 +173,7 @@ Integer &Integer::operator-=(const Integer &a) {
                 LinkedList<long> temp = *this->list;
                 this->list = new LinkedList<long>(*a.getList());
                 *a.getList() = temp;
+                negative = true;
             }
         }
     }
@@ -194,6 +197,8 @@ Integer &Integer::operator-=(const Integer &a) {
                 }
             }
         }
+    if(negative)
+        *this->list->get(0) *= -1;
     return *this;
 }
 
