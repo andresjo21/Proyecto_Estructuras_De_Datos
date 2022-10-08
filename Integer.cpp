@@ -59,12 +59,6 @@ bool Null(const Integer& a) {
     return false;
 }
 
-long Integer::operator[](const int index) const {
-    if(list->size() <= index || index < 0)
-        throw ("ERROR");
-    return *this->list->get(index);
-}
-
 //------- Overloading Operators --------
 
 //Direct assigment
@@ -164,39 +158,49 @@ Integer Integer::operator-(const Integer &a){
 }
 
 Integer &Integer::operator-=(const Integer &a) {
-    int i, j ,n = this->list->size(), m = a.getList()->size();
-    long *aux = new long;
+    int n = this->list->size(), m = a.getList()->size();
     if( m > n) {
         LinkedList<long> temp = *this->list;
         this->list = new LinkedList<long>(*a.getList());
         *a.getList() = temp;
-        n = this->list->size();
-        m = a.getList()->size();
     }
-    for (i = n - 1, j = m -1; i >= 0; i-- , j--) {
-        if(j >= 0)
-            *this->getList()->get(i) -= *a.getList()->get(j);
-        if (*this->list->get(i) < 0) {
-            *aux = *this->list->get(i) / 1000000000;
-            *this->list->get(i) = *this->list->get(i) % 1000000000;
-            if(i!=0)
-                *this->list->get(i ) *= -1;
-            if(i == 0)
-                this->list->add(aux);
-            else
-                *this->list->get(i - 1) -= 1;
+
+    if(m == n) {
+        for (int i = 0; i < this->list->size(); ++i) {
+            if (*this->list->get(i) < *a.getList()->get(i)) {
+                LinkedList<long> temp = *this->list;
+                this->list = new LinkedList<long>(*a.getList());
+                *a.getList() = temp;
+            }
         }
     }
-    //si el primer elemento de la lista es 0, eliminarlo
-    if(*this->list->get(0) == 0)
-        this->list->remove(0);
+
+    //crear dos objetos Integer
+    Integer temp1;
+
+    //recorrer la lista de derecha a izquierda
+    for (int i = this->list->size() - 1, j = a.getList()->size() - 1; i >= 0 && j >= 0; i--, j--) {
+        //recorrer la lista de a de derecha a izquierda
+            //si el elemento de a es menor o igual al elemento de this, restarle el elemento de a al elemento de this
+            if (*a.getList()->get(j) <= *this->list->get(i)) {
+                *this->list->get(i) -= *a.getList()->get(j);
+                //break;
+            } else {
+                //si el elemento de a es mayor al elemento de this, restarle el elemento de a al elemento de this y restarle 1 al elemento anterior de this
+                *this->list->get(i) -= *a.getList()->get(j);
+                if(*this->list->get(i) < 0) {
+                    *this->list->get(i) += 1000000000;
+                    *this->list->get(i - 1) -= 1;
+                }
+            }
+        }
     return *this;
 }
-        //TEST POR RESOLVER
-        Integer Integer::operator*(const Integer &a){
-        Integer temp = *this;
-        temp *= a;
-        return temp;
+
+Integer Integer::operator*(const Integer &a){
+    Integer temp = *this;
+    temp *= a;
+    return temp;
 }
 
 //multiplication
@@ -248,24 +252,28 @@ Integer Integer::operator*=(const Integer &a){
 
 //Division
 Integer Integer::operator/(const Integer &a){
-    //auxiliares
+    Integer temp = *this;
+    temp /= a;
+    return temp;
+}
+
+Integer &Integer::operator/=(const Integer &a) {
+    /*//auxiliares
     //contador
     Integer* contador = new Integer("0");
+    Integer* baseZero = new Integer("0");
     Integer* resultado = new Integer();
-    Integer* base = new Integer("0");
+    Integer* temp = new Integer(this->toString());
     Integer* baseMasUno = new Integer("1");
 
-    while (this->list != base->list) {
+    do {
         *resultado = (*this -= a);
-        if (*resultado > *base) {
-                *contador += *baseMasUno;
-        }
-        else{
-            break;
-        }
-    }
-return *contador;
+        *contador += *baseMasUno;
+    } while (*resultado >*baseZero);
+
+    return *contador;*/
 }
+
 
 bool Integer::operator==(const Integer &a) {
     if(this->list->size() != a.getList()->size())
@@ -318,18 +326,19 @@ bool Integer::operator>=(const Integer &a) {
 }
 
 string Integer::toString() {
-    string temp = "";
+    stringstream temp;
+
     for (int i = 0; i < this->list->size(); ++i) {
-        //pasar el long a string
+
         string temp2 = to_string(*this->list->get(i));
         //si el long es menor a 9 digitos, agregarle ceros a la izquierda mientras no sea el primer elemento
         while(temp2.length() < 9 && i != 0){
             temp2 = "0" + temp2;
         }
-        //agregar el string al string final
-        temp += temp2;
+
+        temp << temp2;
     }
-    return temp;
+    return temp.str();
 }
 
 Integer Integer::operator^(const Integer &a) {
@@ -370,3 +379,20 @@ Integer Integer::fibonacci(int n) {
     }
     return temp2;
 }
+
+ostream &operator<<(ostream &os, const Integer &a) {
+    for (int i = a.getList()->size() - 1; i >= 0; i--)
+        cout << *a.getList()->get(i);
+    return cout;
+}
+
+istream &operator>>(istream &is, Integer &a) {
+       string temp;
+        is >> temp;
+        a = Integer(temp);
+        return is;
+}
+
+
+
+

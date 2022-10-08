@@ -21,13 +21,6 @@ public:
     void setList(LinkedList<long> *list);
     bool Null(const Integer& a);
 
-//Funciones que auxiliares
-    //friend void divide_by_2(Integer &a);
-    //friend bool Null(const Integer &);
-    //friend int Length(const Integer &);
-    long operator[](const int) const;
-
-/* * * * Operator Overloading * * * */
 //Direct assigment
     Integer& operator=(const Integer &a);
 
@@ -53,6 +46,7 @@ public:
 
     //Division
     Integer operator/(const Integer &a);
+    Integer &operator/=(const Integer &a);
 
 
     //Comparison operators
@@ -73,10 +67,20 @@ public:
     //Fibonacci
     Integer fibonacci(int n);
 
+    //Sobre carga de operador <<
+    friend ostream& operator<<(ostream& os, const Integer& a);
+
+    //Sobre carga de operador >>
+    friend istream& operator>>(istream& is, Integer& a);
+
     //toString
     string toString();
 private:
     LinkedList<long > *list;
+
+    Integer *paddZeros(Integer *pInteger, int abs);
+
+    Integer &subtractLinkedListHelper(Integer *pInteger, Integer *pInteger1, bool borrow);
 };
 
 
