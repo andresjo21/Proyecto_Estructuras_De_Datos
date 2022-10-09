@@ -2,82 +2,10 @@
 #include "Integer.h"
 
 int main() {
-    //cout << "Division: " << (ip2 / ip3).toString() << endl;*/
-
-    Integer first("12345");
-    Integer second("2000000000");
-
-    if (first == second) {
-        cout << "first and second are equal!\n";
-    } else
-        cout << "Not equal!\n";
-
-    Integer third("1000000000");
-    Integer fourth("100000");
-    if (third < fourth) {
-        cout << "third is smaller than fourth!\n";
-    }
-    Integer fifth("10000000");
-    if (fifth > fourth) {
-        cout << "fifth is larger than fourth!\n";
-    }
-
-    Integer six("30");
-    Integer seven("31");
-
-
-    // Printing all the numbers
-    cout << "first = " << first << '\n';
-    cout << "second = " << second << '\n';
-    cout << "third = " << third << '\n';
-    cout << "fourth = " << fourth << '\n';
-    cout << "fifth = " << fifth << '\n';
-
-    // Incrementing the value of first
-    first++;
-    cout << "After incrementing the"
-         << " value of first is : ";
-    cout << first << '\n';
-    Integer sum;
-    sum = (fourth + fifth);
-    cout << "Sum of fourth and fifth = "
-         << sum << '\n';
-    Integer rest;
-    rest = (six - seven);
-       cout << "Res of six and seven = "
-         << rest.toString() << '\n';
-    Integer product;
-    product = second * third;
-    cout << "Product of second and third = "
-         << product << '\n';
-    Integer modulus;
-    Integer num1("2768765678");
-    Integer num2("1234323445");
-    modulus = num1 % num2;
-    cout << "modulus of second and third = "
-         << modulus << '\n';
-
-// Print the fibonaccii number from 1 to 100
-
-        Integer fib;
-        fib = fib.fibonacci(1000);
-        cout << "Fibonacci " << 1000 << " = " << fib.toString() << '\n';
-
-
-    /*// Calculating factorial of 1000
-        Integer fact;
-        cout << "Factorial of 1000: ";
-        cout << fact.factorial(1000).toString() << '\n';*/
-
-
-    /*Integer con;
-    cout << "-------------------------Combinations"
-         << "------------------------------\n";
-    cout << "Combinations of 1000 and 350 = " <<
-    con.combinations(1000, 350).toString() << '\n';*/
-
-    //cout << "Modulus of 1000 and 350 = " << (fifth % fourth).toString() << '\n';
-
+    cout<<"100! = " << Integer::factorial(100).toString() << endl;
+    cout<<"Fibonacci(1000) = " << Integer::fibonacci(1000).toString() << endl;
+    cout<<"C(10, 5) = " << Integer::combinations(10, 5 ).toString() << "  C(10, 3) = " << Integer::combinations(10, 3 ).toString() << endl;
+    cout<<"C(10, 2) = " << Integer::combinations(10, 2 ).toString() << endl;
 
     return 0;
 }
