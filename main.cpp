@@ -5,14 +5,14 @@ int main() {
     //cout << "Division: " << (ip2 / ip3).toString() << endl;*/
 
     Integer first("12345");
-    Integer second("12345");
+    Integer second("2000000000");
 
     if (first == second) {
         cout << "first and second are equal!\n";
     } else
         cout << "Not equal!\n";
 
-    Integer third("10000");
+    Integer third("1000000000");
     Integer fourth("100000");
     if (third < fourth) {
         cout << "third is smaller than fourth!\n";
@@ -51,7 +51,9 @@ int main() {
     cout << "Product of second and third = "
          << product << '\n';
     Integer modulus;
-    modulus = second % third;
+    Integer num1("2768765678");
+    Integer num2("1234323445");
+    modulus = num1 % num2;
     cout << "modulus of second and third = "
          << modulus << '\n';
 

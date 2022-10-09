@@ -438,8 +438,6 @@ Integer Integer::operator%(const Integer &a) {
 Integer &Integer::operator%=(const Integer &a) {
 Integer *temp(new Integer(*this));
     *temp /= a;
-    *temp *= a;
-    *this -= *temp;
     return *this;
 
 }
