@@ -52,6 +52,9 @@ public:
     Integer operator/(const Integer &a);
     Integer &operator/=(const Integer &a);
 
+    //Modulus
+    Integer operator%(const Integer &a);
+    Integer &operator%=(const Integer &a);
 
     //Comparison operators
     bool operator==(const Integer &a);

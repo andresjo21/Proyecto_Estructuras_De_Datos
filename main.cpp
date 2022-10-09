@@ -43,38 +43,39 @@ int main() {
     cout << "Sum of fourth and fifth = "
          << sum << '\n';
     Integer rest;
-//    rest = (six - seven);
-//    cout << "Res of six and seven = "
-//         << rest.toString() << '\n';
+    rest = (six - seven);
+       cout << "Res of six and seven = "
+         << rest.toString() << '\n';
     Integer product;
     product = second * third;
     cout << "Product of second and third = "
          << product << '\n';
+    Integer modulus;
+    modulus = second % third;
+    cout << "modulus of second and third = "
+         << modulus << '\n';
 
-/*// Print the fibonaccii number from 1 to 100
-    cout << "-------------------------Fibonacci"
-         << "------------------------------\n";
-    for (int i = 0; i <= 100; i++) {
+// Print the fibonaccii number from 1 to 100
+
         Integer fib;
-        fib = fib.fibonacci(i);
-        cout << "Fibonacci " << i << " = " << fib << '\n';
-    }
+        fib = fib.fibonacci(1000);
+        cout << "Fibonacci " << 1000 << " = " << fib.toString() << '\n';
 
-    // Calculating factorial of from 1 to 100
-    cout << "-------------------------Factorial"
-         << "------------------------------\n";
-    for (int i = 0; i <= 100; i++) {
+
+    /*// Calculating factorial of 1000
         Integer fact;
-        fact = fact.factorial(i);
-        cout << "Factorial of "
-             << i << " = ";
-        cout << fact << '\n';
-    }*/
+        cout << "Factorial of 1000: ";
+        cout << fact.factorial(1000).toString() << '\n';*/
 
-    Integer fib;
 
-    cout << "Fibonacci: " << fib.fibonacci(83).toString() << endl;
+    /*Integer con;
+    cout << "-------------------------Combinations"
+         << "------------------------------\n";
+    cout << "Combinations of 1000 and 350 = " <<
+    con.combinations(1000, 350).toString() << '\n';*/
 
-    cout<<"Division de "<<six.toString()<<" / "<<seven.toString()<<" =  "<<(six/seven).toString()<<endl;
+    //cout << "Modulus of 1000 and 350 = " << (fifth % fourth).toString() << '\n';
+
+
     return 0;
 }
