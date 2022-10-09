@@ -70,6 +70,11 @@ int main() {
              << i << " = ";
         cout << fact << '\n';
     }*/
+
+    Integer fib;
+
+    cout << "Fibonacci: " << fib.fibonacci(83).toString() << endl;
+
     cout<<"Division de "<<six.toString()<<" / "<<seven.toString()<<" =  "<<(six/seven).toString()<<endl;
     return 0;
 }

@@ -389,11 +389,41 @@ Integer Integer::factorial(int n) {
         Integer temp2(to_string(i));
         temp *= temp2;
     }
+
     return temp;
 }
 
 Integer Integer::fibonacci(int n) {
-    Integer temp("1"), temp2("1"), temp3("0");
+    Integer temp("0"), temp2("1");
+    Integer *temp3 = new Integer("0");
+    Integer *temp4 = new Integer("0");
+    Integer *temp5 = new Integer("0");
+    Integer *resultado = new Integer("0");
+
+    if(n == 0)
+        return temp;
+
+    if(n <= 2)
+        return temp2;
+
+    if(n % 2){
+        *temp3 = fibonacci((n-1)/2);
+        *temp4 = fibonacci((n+1)/2);
+        *temp3 *= *temp3;
+        *temp4 *= *temp4;
+        *resultado = *temp3 + *temp4;
+        return *resultado;
+    }
+
+    *temp3 = fibonacci(n/2);
+    *temp4 = fibonacci((n/2)+1);
+    *temp5 = fibonacci((n/2)-1);
+    *resultado = (*temp3 * (*temp4 + *temp5));
+    return *resultado;
+
+
+
+    /*Integer temp("1"), temp2("1"), temp3("0");
     if(!n)
         return temp3;
     n--;
@@ -403,7 +433,7 @@ Integer Integer::fibonacci(int n) {
         temp2 = temp;
         temp = temp3;
     }
-    return temp2;
+    return temp2;*/
 }
 
 //combinations
